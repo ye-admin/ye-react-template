@@ -1,0 +1,31 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "noImplicitAny": true,
+        "module": "ESNext",
+        "target": "es5",
+        "lib": [
+            "DOM",
+            "DOM.Iterable",
+            "ESNext",
+        ],
+        "jsx": "react",
+        "allowJs": false,
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": false,
+        "sourceMap": true,
+        "noUnusedLocals": true, // 检查只声明、未使用的局部变量(只提示不报错)
+        "noUnusedParameters": true, // 检查未使用的函数参数(只提示不报错)
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "src/*"
+            ],
+        }
+    },
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
+}
