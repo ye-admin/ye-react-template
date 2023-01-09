@@ -4,13 +4,13 @@
   "description": "webpack5配置的react+ts项目模板",
   "private": true,
   "scripts": {
-    "start": "webpack serve --open --config ./env/webpack.dev.js",
-    "build": "webpack --config ./env/webpack.dev.js",
-    "analyzer": "webpack --config ./env/webpack.analyzer.js --progress"
+    "dev": "webpack serve --env REACT_ENV=dev",
+    "dev:live": "webpack serve --env REACT_ENV=live",
+    "build:live": "webpack --env REACT_ENV=live",
+    "analyzer": "webpack --env REACT_ENV=live --env analyzer"
   },
   "keywords": [],
   "author": "ye",
-  "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.20.5",
     "@babel/plugin-transform-runtime": "^7.19.6",
@@ -29,19 +29,18 @@
     "mini-css-extract-plugin": "^2.7.1",
     "postcss": "^8.4.19",
     "postcss-loader": "^7.0.2",
+    "terser-webpack-plugin": "^5.3.6",
     "ts-loader": "^9.4.1",
     "typescript": "^4.9.3",
     "webpack": "^5.75.0",
     "webpack-bundle-analyzer": "^4.7.0",
-    "webpack-cli": "^5.0.0",
-    "webpack-dev-server": "^4.11.1",
-    "webpack-merge": "^5.8.0"
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
     "@babel/runtime": "^7.20.6",
-    "antd": "^5.0.3",
+    "antd": "^5.1.2",
     "dayjs": "^1.11.6",
-    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.4"

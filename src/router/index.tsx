@@ -1,9 +1,9 @@
 import React, { } from "react";
-import {
-    Outlet,
-    useLocation,
-    useNavigate
-} from "react-router-dom";
+// import {
+//     Outlet,
+//     useLocation,
+//     useNavigate
+// } from "react-router-dom";
 import ErrorPage from "@/pages/error-page";
 import Main from "@/pages/main";
 import Home from "@/pages/home";
@@ -68,12 +68,12 @@ export const router: MyRouter[] = [
 ]
 
 // 后台管理项目路由守卫-localStorage或者redux
-export const RouterBeforeEach = () => {
-    const location = useLocation()
-    const navigator = useNavigate()
-    const token = localStorage.getItem('token')
-    if (!token && location.pathname !== '/login') {
-        navigator('/login')
-    }
-    return <Outlet />
-}
+// export const RouterBeforeEach = () => {
+//     const location = useLocation()
+//     const navigator = useNavigate()
+//     const token = localStorage.getItem('token')
+//     if (!token && location.pathname !== '/login') {
+//         navigator('/login')
+//     }
+//     return <Outlet />
+// }

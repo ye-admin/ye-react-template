@@ -8,7 +8,6 @@ const App: FC = () => {
 
     // 鉴权过滤 - 未登录只渲染无需鉴权的路由 登录后根据鉴权过滤路由
     useEffect(() => {
-        console.log(navigator.userAgent);
         // setTimeout(() => {
         //     setList([...list])
         // }, 1000);
@@ -16,9 +15,7 @@ const App: FC = () => {
 
     return <BrowserRouter>
         <Routes>
-            {
-                list.map(i => renderRoute(i))
-            }
+            {list.map(i => renderRoute(i))}
             <Route path='*' element={<NoFont />} />
         </Routes>
     </BrowserRouter>
