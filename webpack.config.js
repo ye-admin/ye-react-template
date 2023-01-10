@@ -3,11 +3,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const TerserPlugin = require("terser-webpack-plugin");
+const {
+    DefinePlugin,
+} = require("webpack")
 const config = require('./config')
 
 module.exports = (env) => {
-    // process.env.REACT_ENV = env.REACT_ENV
     console.log(env.REACT_ENV);
+    console.log(typeof env.REACT_ENV);
     console.log(config[env.REACT_ENV]);
     const data = config[env.REACT_ENV]
     return {
@@ -24,6 +27,9 @@ module.exports = (env) => {
             asyncChunks: true
         },
         plugins: [
+            new DefinePlugin({
+                'process.env.REACT_ENV': JSON.stringify(env.REACT_ENV),
+            }),
             new HtmlWebpackPlugin({
                 filename: 'index.html',
                 template: path.resolve(__dirname, './public/index.html'),
@@ -62,11 +68,6 @@ module.exports = (env) => {
                 new TerserPlugin({
                     parallel: true,
                     extractComments: true, //提取注释
-                    terserOptions: {
-                        output: {
-                            comments: false
-                        }
-                    }
                 })
             ],
             splitChunks: {

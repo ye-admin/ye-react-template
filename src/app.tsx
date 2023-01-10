@@ -5,7 +5,6 @@ import NoFont from "@/pages/noFont";
 
 const App: FC = () => {
     const [list] = useState(router)
-
     // 鉴权过滤 - 未登录只渲染无需鉴权的路由 登录后根据鉴权过滤路由
     useEffect(() => {
         // setTimeout(() => {

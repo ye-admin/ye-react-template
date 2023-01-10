@@ -3,22 +3,21 @@ import { message } from 'antd';
 
 // const baseURL = config.realWorldServer
 
-const instance = axios.create({
+const api = axios.create({
     // baseURL: baseURL,
     timeout: 10000
 });
 
-
 // 请求拦截
-instance.interceptors.request.use(function (config) {
+api.interceptors.request.use(function (config) {
     // 在发送请求之前做些什么
     // 是否应该携带token？
     // const token = store.getState().app.token
-    const iv = Date.now().toString();
-
+    const time = Date.now().toString();
+    console.log(config.loading);
     // token && (config.headers['Authorization-New'] = `Bearer ${encryptToken(token, iv)}`)
     config.headers["oil-channel"] = "SMARTLINK-THIRD-MERCHANT"
-    config.headers["timestamp"] = iv
+    config.headers["timestamp"] = time
     config.headers["self-test"] = 'aU8$KhHnMdepo9'
 
     // LoadingStack.whenRequest(config)
@@ -31,7 +30,7 @@ instance.interceptors.request.use(function (config) {
 })
 
 // 响应拦截
-instance.interceptors.response.use(function (response) {
+api.interceptors.response.use(function (response) {
     // 对响应数据做点什么
     // LoadingStack.whenResponse(response?.config)
     if (response?.data?.code && response.data.code !== 200) {
@@ -62,7 +61,7 @@ instance.interceptors.response.use(function (response) {
     return Promise.reject(error);
 })
 
-export default instance
+export default api
 // const secret = "a0cdeff654dfeb6b";
 // function encryptToken(token: string, iv: string) {
 //     return CryptoJS.AES.encrypt(token, CryptoJS.enc.Utf8.parse(secret), {

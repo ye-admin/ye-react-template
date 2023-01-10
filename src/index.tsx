@@ -2,7 +2,7 @@ import React from 'react'
 import { createRoot } from 'react-dom/client';
 import App from './app';
 // 错误边界
-import ErrorBoundary from './layout/ErrorBoundary';
+// import ErrorBoundary from './layout/ErrorBoundary';
 // 全局样式文件
 import 'antd/dist/reset.css';
 import './style.less'
@@ -16,7 +16,7 @@ dayjs.locale('zh');
 
 const root = createRoot(document.querySelector('#root'));
 root.render(
-    <ErrorBoundary>
+    // <ErrorBoundary>
         <ConfigProvider
             theme={{
                 token: {
@@ -29,5 +29,5 @@ root.render(
             locale={zhCN}>
             <App />
         </ConfigProvider>
-    </ErrorBoundary>
+    // </ErrorBoundary>
 );
