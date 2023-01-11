@@ -4,8 +4,8 @@
   "description": "项目模板:webpack5+react+ts",
   "private": true,
   "scripts": {
-    "dev": "webpack serve --env REACT_ENV=dev",
-    "dev:live": "webpack serve --env REACT_ENV=live",
+    "start": "webpack serve --env REACT_ENV=dev",
+    "start:live": "webpack serve --env REACT_ENV=live",
     "build:live": "webpack --env REACT_ENV=live",
     "analyzer": "webpack --env REACT_ENV=live --env analyzer"
   },
