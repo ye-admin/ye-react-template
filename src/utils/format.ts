@@ -1,4 +1,4 @@
-import dayjs from 'dayjs';
+import dayjs from 'dayjs'
 
 /**
  * 返回格式格式：YYYY-MM-DD HH:mm:ss
@@ -6,5 +6,5 @@ import dayjs from 'dayjs';
  * @返回 24小时制 string
  */
 export function customTime(time: Date): string {
-  return dayjs(time).format('YYYY-MM-DD HH:mm:ss');
+  return dayjs(time).format('YYYY-MM-DD HH:mm:ss')
 }

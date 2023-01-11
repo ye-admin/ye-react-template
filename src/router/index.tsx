@@ -1,26 +1,26 @@
-import React, { } from "react";
+import React, {} from "react"
 // import {
 //     Outlet,
 //     useLocation,
 //     useNavigate
 // } from "react-router-dom";
-import ErrorPage from "@/pages/error-page";
-import Main from "@/pages/main";
-import Home from "@/pages/home";
-import Contact from "@/pages/contact";
-import Login from "@/pages/login";
+import ErrorPage from "@/pages/error-page"
+import Main from "@/pages/main"
+import Home from "@/pages/home"
+import Contact from "@/pages/contact"
+import Login from "@/pages/login"
 
 type meta = {
-    title?: string;
+    title?: string
     authority?: string
 }
 export type MyRouter = {
-    path?: string;
-    id: string;
-    index?: boolean;
-    children?: MyRouter[];
-    element?: React.ReactNode | null;
-    meta?: meta;
+    path?: string
+    id: string
+    index?: boolean
+    children?: MyRouter[]
+    element?: React.ReactNode | null
+    meta?: meta
 }
 
 export const router: MyRouter[] = [

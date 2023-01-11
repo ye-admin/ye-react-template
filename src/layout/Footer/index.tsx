@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import "./style.less";
+import "./style.less"
 
 const Footer: FC = () => {
     return (<>

@@ -41,7 +41,7 @@ module.exports = (env) => {
             ...env.analyzer ? [new BundleAnalyzerPlugin()] : []
         ],
         resolve: {
-            extensions: ['.tsx', '.ts', '.js'],
+            extensions: ['.tsx', '.ts', '.js', '...'],
             alias: {
                 '@': path.resolve(__dirname, './src'),
             },

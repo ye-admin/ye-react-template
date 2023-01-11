@@ -1,7 +1,8 @@
 import { Button } from "antd"
 import React, { FC, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import one from "@/assets/images/logo.jpg";
+import one from "@/assets/images/logo.jpg"
+// import one from "../../assets/images"
 
 const Home: FC = () => {
     const navigator = useNavigate()

@@ -4,7 +4,7 @@ export class JudgeAgent {
     this.versions = {}
     this.judgeEnv()
   }
-  getVersion () {
+  getVersion() {
     const u = navigator.userAgent
     return {
       // 移动终端浏览器版本信息
@@ -20,7 +20,7 @@ export class JudgeAgent {
       webApp: u.indexOf('Safari') === -1 //是否web应该程序，没有头部与底部
     }
   }
-  judgeEnv () {
+  judgeEnv() {
     const versions = this.getVersion()
     this.versions = versions
     if (versions.mobile) {

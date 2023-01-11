@@ -1,20 +1,20 @@
 import axios from 'axios'
-import { message } from 'antd';
+import { message } from 'antd'
 
 // const baseURL = config.realWorldServer
 
 const api = axios.create({
     // baseURL: baseURL,
     timeout: 10000
-});
+})
 
 // 请求拦截
 api.interceptors.request.use(function (config) {
     // 在发送请求之前做些什么
     // 是否应该携带token？
     // const token = store.getState().app.token
-    const time = Date.now().toString();
-    console.log(config.loading);
+    const time = Date.now().toString()
+    console.log(config.loading)
     // token && (config.headers['Authorization-New'] = `Bearer ${encryptToken(token, iv)}`)
     config.headers["oil-channel"] = "SMARTLINK-THIRD-MERCHANT"
     config.headers["timestamp"] = time
@@ -22,11 +22,11 @@ api.interceptors.request.use(function (config) {
 
     // LoadingStack.whenRequest(config)
 
-    return config;
+    return config
 }, function (error) {
     // 对请求错误做些什么
     // LoadingStack.whenResponse(error?.config)
-    return Promise.reject(error);
+    return Promise.reject(error)
 })
 
 // 响应拦截
@@ -39,17 +39,17 @@ api.interceptors.response.use(function (response) {
             case 401: {
                 // 跳登陆
                 // store.dispatch(clearUinfoAndRedirectLogin() as any)
-            } break;
+            } break
             case 525: {
                 // 跳登陆
                 // store.dispatch(clearUinfoAndRedirectLogin() as any)
-            } break;
+            } break
             default: {
-                message.error(result.message || "Error");
-            } break;
+                message.error(result.message || "Error")
+            } break
         }
     }
-    return response.data;
+    return response.data
 
 }, function (error) {
     if (error.response.data.code === 525 || error.response.data.code === 401) {
@@ -58,15 +58,7 @@ api.interceptors.response.use(function (response) {
     }
     // 对响应错误做点什么
     // LoadingStack.whenResponse(error?.config)
-    return Promise.reject(error);
+    return Promise.reject(error)
 })
 
 export default api
-// const secret = "a0cdeff654dfeb6b";
-// function encryptToken(token: string, iv: string) {
-//     return CryptoJS.AES.encrypt(token, CryptoJS.enc.Utf8.parse(secret), {
-//         iv: CryptoJS.enc.Utf8.parse("000" + iv),
-//         mode: CryptoJS.mode.CBC,
-//         padding: CryptoJS.pad.Pkcs7
-//     }).toString();
-// }

@@ -1,7 +1,7 @@
-import React, { FC, ReactNode, useEffect, useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { router, MyRouter } from './router';
-import NoFont from "@/pages/noFont";
+import React, { FC, ReactNode, useEffect, useState } from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { router, MyRouter } from './router'
+import NoFont from "@/pages/noFont"
 
 const App: FC = () => {
     const [list] = useState(router)
@@ -18,9 +18,9 @@ const App: FC = () => {
             <Route path='*' element={<NoFont />} />
         </Routes>
     </BrowserRouter>
-};
+}
 
-export default App;
+export default App
 
 function renderRoute(item: MyRouter): ReactNode {
     return item.index ? <Route index key={item.id} element={item.element} />

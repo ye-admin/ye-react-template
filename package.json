@@ -1,7 +1,7 @@
 {
   "name": "ye-react-template",
   "version": "1.0.0",
-  "description": "webpack5配置的react+ts项目模板",
+  "description": "项目模板:webpack5+react+ts",
   "private": true,
   "scripts": {
     "dev": "webpack serve --env REACT_ENV=dev",

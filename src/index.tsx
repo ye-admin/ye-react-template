@@ -1,33 +1,33 @@
 import React from 'react'
-import { createRoot } from 'react-dom/client';
-import App from './app';
+import { createRoot } from 'react-dom/client'
+import App from './app'
 // 错误边界
 // import ErrorBoundary from './layout/ErrorBoundary';
 // 全局样式文件
-import 'antd/dist/reset.css';
+import 'antd/dist/reset.css'
 import './style.less'
 // 设置主题
-import { ConfigProvider, theme } from 'antd';
+import { ConfigProvider, theme } from 'antd'
 // 设置语言
-import dayjs from "dayjs";
-import 'dayjs/locale/zh-cn';
-import zhCN from 'antd/locale/zh_CN';
-dayjs.locale('zh');
+import dayjs from "dayjs"
+import 'dayjs/locale/zh-cn'
+import zhCN from 'antd/locale/zh_CN'
+dayjs.locale('zh')
 
-const root = createRoot(document.querySelector('#root'));
+const root = createRoot(document.querySelector('#root'))
 root.render(
     // <ErrorBoundary>
-        <ConfigProvider
-            theme={{
-                token: {
-                    colorPrimary: '#00b96b'
-                },
-                algorithm: theme.defaultAlgorithm,
-                // algorithm: theme.darkAlgorithm,
-                // algorithm: theme.compactAlgorithm,
-            }}
-            locale={zhCN}>
-            <App />
-        </ConfigProvider>
+    <ConfigProvider
+        theme={{
+            token: {
+                colorPrimary: '#00b96b'
+            },
+            algorithm: theme.defaultAlgorithm,
+            // algorithm: theme.darkAlgorithm,
+            // algorithm: theme.compactAlgorithm,
+        }}
+        locale={zhCN}>
+        <App />
+    </ConfigProvider>
     // </ErrorBoundary>
-);
+)

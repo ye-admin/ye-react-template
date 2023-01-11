@@ -1,0 +1,38 @@
+{
+    //保存后自动格式化
+    "editor.formatOnSave": true,
+    // 控制"转到定义"鼠标手势是否始终打开预览小部件。
+    "editor.definitionLinkOpensInPeek": false,
+    // 控制编辑器是否启用了代码折叠。
+    "editor.folding": true,
+    // 控制编辑器是否应突出显示折叠范围。
+    "editor.foldingHighlight": true,
+    // 控制编辑器是否显示缩进参考线。
+    "editor.guides.indentation": true,
+    // 一个制表符等于的空格数。在 `editor.detectIndentation` 启用时，根据文件内容，该设置可能会被覆盖。
+    "editor.tabSize": 4,
+    // 删除自动插入的尾随空白符号。
+    "editor.trimAutoWhitespace": true,
+    // 在编辑器中启用代码操作小灯泡提示。
+    "editor.lightbulb.enabled": true,
+    // 在删除文件或文件夹时，将它们移动到操作系统的“废纸篓”中 (Windows 为“回收站”)。禁用此设置将永久删除文件或文件夹。
+    "files.enableTrash": true,
+    // 定义空大括号中左括号后和右括号前的空格处理方式。
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
+    // 定义非必要分号的处理方式。要求在工作区内使用 TypeScript 3.7 或更高版本。
+    //  - ignore: 不要插入或删除任何分号。
+    //  - insert: 在语句末尾插入分号。
+    //  - remove: 删除不必要的分号。
+    "javascript.format.semicolons": "remove",
+    // 定义空大括号中左括号后和右括号前的空格处理方式。
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
+    // 定义非必要分号的处理方式。要求在工作区内使用 TypeScript 3.7 或更高版本。
+    //  - ignore: 不要插入或删除任何分号。
+    //  - insert: 在语句末尾插入分号。
+    //  - remove: 删除不必要的分号。
+    "typescript.format.semicolons": "remove",
+    // 配置 [glob 模式](https://code.visualstudio.com/docs/editor/codebasics#_advanced-search-options)以在全文搜索和快速打开中排除文件和文件夹。从 "#files.exclude#" 设置继承所有 glob 模式。
+    "search.exclude": {
+        "**/node_modules": true,
+    },
+}

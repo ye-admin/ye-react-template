@@ -1,0 +1,14 @@
+{
+    "ye-page": {
+        "prefix": "ye-page",
+        "body": [
+            "import React, { FC } from 'react'",
+            "const Page: FC = () => {",
+            "    return <>",
+            "    </>",
+            "}",
+            "export default Page"
+        ],
+        "description": "普通页面结构模板"
+    }
+}

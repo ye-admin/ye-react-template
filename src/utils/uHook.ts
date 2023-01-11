@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
 
 //定义size对象
 interface WindowSize {
@@ -41,7 +41,7 @@ export function UseVisibilitychange() {
       const visibility = document.visibilityState
       if (visibility === 'visible') {
         setVisibility(true)
-      }else{
+      } else {
         setVisibility(false)
       }
     }

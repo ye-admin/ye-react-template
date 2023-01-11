@@ -1,12 +1,12 @@
-import { Card, Space } from 'antd';
-import React, { FC } from 'react';
-import { NavLink } from 'react-router-dom';
-import "./style.less";
+import { Card, Space } from 'antd'
+import React, { FC } from 'react'
+import { NavLink } from 'react-router-dom'
+import "./style.less"
 
 const TitleNav: FC = () => {
     const getClassName = ({ isActive, isPending }: {
-        isActive: boolean;
-        isPending: boolean;
+        isActive: boolean
+        isPending: boolean
     }) => isActive ? "active" : isPending ? "pending" : ""
     return <div className='titleNav'>
         <Card>
@@ -17,6 +17,6 @@ const TitleNav: FC = () => {
             </Space>
         </Card>
     </div>
-};
+}
 
-export default TitleNav;
+export default TitleNav
