@@ -1,36 +1,34 @@
 import axios from 'axios'
 import { message } from 'antd'
+import { openLoading, closeLoading } from "@/components/Loading"
 
 // const baseURL = config.realWorldServer
 
-const api = axios.create({
+const request = axios.create({
     // baseURL: baseURL,
     timeout: 10000
 })
-
 // 请求拦截
-api.interceptors.request.use(function (config) {
+request.interceptors.request.use(function (config) {
     // 在发送请求之前做些什么
     // 是否应该携带token？
     // const token = store.getState().app.token
     const time = Date.now().toString()
-    console.log(config.loading)
+    // console.log(config.loading)
     // token && (config.headers['Authorization-New'] = `Bearer ${encryptToken(token, iv)}`)
-    config.headers["oil-channel"] = "SMARTLINK-THIRD-MERCHANT"
     config.headers["timestamp"] = time
-    config.headers["self-test"] = 'aU8$KhHnMdepo9'
 
-    // LoadingStack.whenRequest(config)
+    openLoading(config?.loading)
 
     return config
 }, function (error) {
     // 对请求错误做些什么
-    // LoadingStack.whenResponse(error?.config)
+    closeLoading(error?.config?.loading)
     return Promise.reject(error)
 })
 
 // 响应拦截
-api.interceptors.response.use(function (response) {
+request.interceptors.response.use(function (response) {
     // 对响应数据做点什么
     // LoadingStack.whenResponse(response?.config)
     if (response?.data?.code && response.data.code !== 200) {
@@ -57,8 +55,8 @@ api.interceptors.response.use(function (response) {
         // store.dispatch(clearUinfoAndRedirectLogin() as any)
     }
     // 对响应错误做点什么
-    // LoadingStack.whenResponse(error?.config)
+    closeLoading(error?.config?.loading)
     return Promise.reject(error)
 })
 
-export default api
+export default request

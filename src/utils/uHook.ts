@@ -7,8 +7,8 @@ interface WindowSize {
 }
 
 /**
- * 
- * @returns 监听页面尺寸变化
+ * 监听页面尺寸变化
+ * @returns width and height
  */
 export function UseWindowSize() {
   const [size, setSize] = useState<WindowSize>({
@@ -31,8 +31,8 @@ export function UseWindowSize() {
 }
 
 /**
- * 
- * @returns 监听页面显示隐藏
+ * 监听页面显示隐藏
+ * @returns 页面显示返回true 页面隐藏返回false
  */
 export function UseVisibilitychange() {
   const [visibility, setVisibility] = useState<boolean>(true)

@@ -1,10 +1,10 @@
 import dayjs from 'dayjs'
 
 /**
- * 返回格式格式：YYYY-MM-DD HH:mm:ss
- * @参数 Date
- * @返回 24小时制 string
+ * @time dayjs.ConfigType
+ * @format 默认格式YYYY-MM-DD HH:mm:ss
+ * @returns string 24小时制
  */
-export function customTime(time: Date): string {
-  return dayjs(time).format('YYYY-MM-DD HH:mm:ss')
+export function timeFormat(time: dayjs.ConfigType, format: string = 'YYYY-MM-DD HH:mm:ss'): string {
+  return dayjs(time).format(format)
 }

@@ -1,4 +1,4 @@
-import axios from "axios"
+import { AxiosRequestConfig } from 'axios'
 
 declare namespace ApiType {
     export type Pagination = {
