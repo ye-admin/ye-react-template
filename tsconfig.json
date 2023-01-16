@@ -1,7 +1,6 @@
 {
     "compilerOptions": {
-        "outDir": "./dist/",
-        "noImplicitAny": true,
+        "outDir": "./dist",
         "module": "ESNext",
         "target": "es5",
         "lib": [
@@ -15,8 +14,11 @@
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": false,
         "sourceMap": true,
+        "incremental": true, // TS编译器在第一次编译之后会生成一个存储编译信息的文件，第二次编译会在第一次的基础上进行增量编译，可以提高编译的速度
         "noUnusedLocals": true, // 检查只声明、未使用的局部变量(只提示不报错)
         "noUnusedParameters": true, // 检查未使用的函数参数(只提示不报错)
+        "noImplicitAny": true, // 不允许隐式的 any 类型
+        "removeComments": true, // 删除注释
         "baseUrl": ".",
         "paths": {
             "@/*": [
@@ -24,6 +26,11 @@
             ],
         }
     },
+    "include": [
+        "src",
+        "react-app-env.d.ts",
+        "custom.d.ts",
+    ],
     "exclude": [
         "node_modules",
         "dist"

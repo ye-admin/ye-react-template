@@ -1,3 +1,26 @@
-declare module '*.jpeg'
-declare module '*.jpg'
+declare module '*.less'
+declare module '*.svg'
 declare module '*.png'
+declare module '*.jpg'
+declare module '*.jpeg'
+declare namespace ApiType {
+    type Pagination = {
+        pageNum: number
+        pageSize: number
+    }
+    type PaginationT = {
+        total: number
+    } & ApiType.Pagination
+    type list<T> = {
+        code: number
+        message: string
+        data: {
+            list: T[]
+        } & ApiType.PaginationT
+    }
+    type data<T> = {
+        code: number
+        message: string
+        data: T
+    }
+}
