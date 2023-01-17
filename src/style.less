@@ -1,16 +1,36 @@
+html {
+    font-size: 100px;
+}
+
+html body {
+    .fs-16();
+}
+
 #root {
     height: 100vh;
 }
 
-#layout {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
+.fs-16 {
+    font-size: 0.16rem;
+}
+
+@media screen and (max-width:960px) {
+    html {
+        font-size: 100px;
+    }
+}
+
+@media screen and (max-width:500px) {
+    html {
+        font-size: 100px;
+    }
 }
 
 img {
-    display: flex;
-    width: 600px;
-    height: auto;
+    display: block;
+}
+
+p {
+    margin: 0;
+    padding: 0;
 }

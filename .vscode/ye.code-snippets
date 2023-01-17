@@ -4,8 +4,8 @@
         "body": [
             "import React, { FC } from 'react'",
             "const Page: FC = () => {",
-            "    return <>",
-            "    </>",
+            "    return <div>",
+            "    </div>",
             "}",
             "export default Page"
         ],

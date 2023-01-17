@@ -20,7 +20,7 @@ root.render(
     <ConfigProvider
         theme={{
             token: {
-                colorPrimary: '#00b96b'
+                fontSize: 16
             },
             algorithm: theme.defaultAlgorithm,
             // algorithm: theme.darkAlgorithm,

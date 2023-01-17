@@ -8,7 +8,7 @@ const TitleNav: FC = () => {
         isActive: boolean
         isPending: boolean
     }) => isActive ? "active" : isPending ? "pending" : ""
-    return <div className='titleNav'>
+    return <div id='titleNav'>
         <Card>
             <Space>
                 <NavLink to={`/`} className={getClassName}>首页</NavLink>

@@ -47,7 +47,7 @@ request.interceptors.response.use(function (response) {
             } break
         }
     }
-    return response.data
+    return response
 
 }, function (error) {
     if (error.response.data.code === 525 || error.response.data.code === 401) {

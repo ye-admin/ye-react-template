@@ -5,7 +5,7 @@ declare module '*.jpg'
 declare module '*.jpeg'
 declare namespace ApiType {
     type Pagination = {
-        pageNum: number
+        current: number
         pageSize: number
     }
     type PaginationT = {
