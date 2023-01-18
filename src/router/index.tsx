@@ -21,6 +21,7 @@ export type MyRouter = {
     children?: MyRouter[]
     element?: React.ReactNode | null
     meta?: meta
+    showNav?: boolean
 }
 
 export const router: MyRouter[] = [
@@ -37,7 +38,8 @@ export const router: MyRouter[] = [
                 id: 'home',
                 meta: {
                     title: '首页'
-                }
+                },
+                showNav: true
             },
             {
                 path: "contacts/:contactId",
@@ -45,7 +47,8 @@ export const router: MyRouter[] = [
                 id: 'contacts',
                 meta: {
                     title: '联系人'
-                }
+                },
+                showNav: true
             },
             {
                 path: "error",

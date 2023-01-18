@@ -16,7 +16,9 @@ const Home: FC = () => {
                 localStorage.removeItem('token')
                 navigator('/login')
             }}>logout</Button>
-            <img src={one} alt="" />
+            <img src={one} alt="" style={{
+                width: '600px'
+            }} />
         </div>
     </>)
 }
