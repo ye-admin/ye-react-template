@@ -1,11 +1,11 @@
 import axios from 'axios'
 import { message } from 'antd'
-import { openLoading, closeLoading } from "@/components/Loading"
+import { openLoading, closeLoading } from "@/components/GlobalLoading"
 
 // const baseURL = config.realWorldServer
 
 const request = axios.create({
-    // baseURL: baseURL,
+    baseURL: location.origin,
     timeout: 10000
 })
 // 请求拦截
@@ -19,7 +19,6 @@ request.interceptors.request.use(function (config) {
     config.headers["timestamp"] = time
 
     openLoading(config?.loading)
-
     return config
 }, function (error) {
     // 对请求错误做些什么
@@ -31,7 +30,7 @@ request.interceptors.request.use(function (config) {
 request.interceptors.response.use(function (response) {
     // 对响应数据做点什么
     // LoadingStack.whenResponse(response?.config)
-    if (response?.data?.code && response.data.code !== 200) {
+    if (response?.data?.code !== 200) {
         const result = response.data
         switch (result.code) {
             case 401: {
@@ -50,7 +49,7 @@ request.interceptors.response.use(function (response) {
     return response
 
 }, function (error) {
-    if (error.response.data.code === 525 || error.response.data.code === 401) {
+    if (error.response?.data.code === 525 || error.response?.data.code === 401) {
         // 跳登陆
         // store.dispatch(clearUinfoAndRedirectLogin() as any)
     }

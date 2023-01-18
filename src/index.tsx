@@ -5,7 +5,7 @@ import App from './app'
 // import ErrorBoundary from './layout/ErrorBoundary';
 // 全局样式文件
 import 'antd/dist/reset.css'
-import './style.less'
+import './config/css/index.less'
 // 设置主题
 import { ConfigProvider, theme } from 'antd'
 // 设置语言
@@ -20,11 +20,9 @@ root.render(
     <ConfigProvider
         theme={{
             token: {
-                fontSize: 16
+                fontSize: 16,
             },
             algorithm: theme.defaultAlgorithm,
-            // algorithm: theme.darkAlgorithm,
-            // algorithm: theme.compactAlgorithm,
         }}
         locale={zhCN}>
         <App />

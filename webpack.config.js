@@ -53,7 +53,7 @@ module.exports = (env) => {
             open: false,
             proxy: {
                 '/api': {
-                    target: data.baseURL,
+                    target: data.proxy,
                     pathRewrite: {
                         '^/api': ''
                     },
