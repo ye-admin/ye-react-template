@@ -1,8 +1,7 @@
 import { Button } from "antd"
 import React, { FC, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import one from "@/assets/images/logo.jpg"
-// import one from "../../assets/images"
+import { test } from "@/assets/images"
 
 const Home: FC = () => {
     const navigator = useNavigate()
@@ -16,7 +15,7 @@ const Home: FC = () => {
                 localStorage.removeItem('token')
                 navigator('/login')
             }}>logout</Button>
-            <img src={one} alt="" style={{
+            <img src={test} alt="" style={{
                 width: '600px'
             }} />
         </div>

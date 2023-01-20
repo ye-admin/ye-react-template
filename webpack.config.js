@@ -3,15 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const TerserPlugin = require("terser-webpack-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
 const {
     DefinePlugin,
 } = require("webpack")
 const config = require('./config')
 
 module.exports = (env) => {
-    console.log(env.REACT_ENV);
-    console.log(typeof env.REACT_ENV);
-    console.log(config[env.REACT_ENV]);
     const data = config[env.REACT_ENV]
     return {
         mode: data.mode,
@@ -20,7 +18,7 @@ module.exports = (env) => {
             index: './src/index.tsx',
         },
         output: {
-            filename: 'js/[name].[contenthash].js',
+            filename: 'js/[name].[contenthash:8].js',
             path: path.resolve(__dirname, './dist'),
             clean: true,
             publicPath: '/',
@@ -33,12 +31,19 @@ module.exports = (env) => {
             new HtmlWebpackPlugin({
                 filename: 'index.html',
                 template: path.resolve(__dirname, './public/index.html'),
-                favicon: path.resolve(__dirname, './public/favicon.png')
+                // favicon: path.resolve(__dirname, './public/favicon.png')
             }),
             new MiniCssExtractPlugin({
-                filename: 'css/[name].css',
+                filename: 'css/[name].[contenthash:8].css',
             }),
-            ...env.analyzer ? [new BundleAnalyzerPlugin()] : []
+            ...env.analyzer ? [new BundleAnalyzerPlugin()] : [],
+            ...env.REACT_ENV === 'live' ? [new CompressionPlugin({
+                algorithm: 'gzip',
+                test: /\.js$|\.css$/,
+                threshold: 10240,
+                minRatio: 0.8, // 压缩率小于1才会压缩
+                deleteOriginalAssets: false // 是否删除原资源
+            })] : []
         ],
         resolve: {
             extensions: ['.tsx', '.ts', '.js', '...'],
@@ -123,14 +128,14 @@ module.exports = (env) => {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
                 generator: {
-                    filename: 'images/[hash][ext][query]',
+                    filename: 'images/[contenthash:8][ext][query]',
                     publicPath: '/',
                 }
             }, {
                 test: /\.(eot|ttf|woff|woff2)$/,
                 type: 'asset/resource',
                 generator: {
-                    filename: 'fonts/[hash][ext][query]',
+                    filename: 'fonts/[contenthash:8][ext][query]',
                     publicPath: '/',
                 },
             }, ]
