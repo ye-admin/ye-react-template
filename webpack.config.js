@@ -34,7 +34,7 @@ module.exports = (env) => {
                 // favicon: path.resolve(__dirname, './public/favicon.png')
             }),
             new MiniCssExtractPlugin({
-                filename: 'css/[name].[contenthash:8].css',
+                filename: env.REACT_ENV === 'dev' ? 'css/[name].css' : 'css/[name].[contenthash:8].css',
             }),
             ...env.analyzer ? [new BundleAnalyzerPlugin()] : [],
             ...env.REACT_ENV === 'live' ? [new CompressionPlugin({
