@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks"
 import { jian, addValue, getAsyncInfo } from "@/redux/global"
 
 const Home: FC = () => {
-    const navigator = useNavigate()
+    const goPage = useNavigate()
     const count = useAppSelector(state => state.global.value)
     const dispatch = useAppDispatch()
     useEffect(() => {
@@ -21,11 +21,9 @@ const Home: FC = () => {
             <Button onClick={() => dispatch(jian())}>--</Button>
             <Button onClick={() => {
                 localStorage.removeItem('token')
-                navigator('/login')
+                goPage('/login')
             }}>logout</Button>
-            <img src={test} alt="" style={{
-                width: '600px'
-            }} />
+            <img src={test} alt="" style={{ width: '600px' }} />
         </div>
     </>)
 }

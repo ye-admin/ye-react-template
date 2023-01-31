@@ -1,17 +1,26 @@
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+import { qsStringify } from "."
 
-//定义size对象
-interface WindowSize {
-  width: number,
-  height: number
+/**
+ * 路由跳转
+ */
+export const useGoRouter = () => {
+  const g = useNavigate()
+  return (url: string, params?: Record<string, number | string>) => {
+    g(url + (params ? '?' + qsStringify(params) : ''))
+  }
 }
 
 /**
  * 监听页面尺寸变化
  * @returns width and height
  */
-export function UseWindowSize() {
-  const [size, setSize] = useState<WindowSize>({
+export function useWindowSize() {
+  const [size, setSize] = useState<{
+    width: number,
+    height: number
+  }>({
     width: document.documentElement.clientWidth,
     height: document.documentElement.clientHeight,
   })
@@ -34,7 +43,7 @@ export function UseWindowSize() {
  * 监听页面显示隐藏
  * @returns 页面显示返回true 页面隐藏返回false
  */
-export function UseVisibilitychange() {
+export function useVisibilitychange() {
   const [visibility, setVisibility] = useState<boolean>(true)
   useEffect(() => {
     const fun = () => {

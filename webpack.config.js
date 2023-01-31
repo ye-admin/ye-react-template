@@ -53,7 +53,7 @@ module.exports = (env) => {
         },
         devServer: {
             hot: true,
-            port: 8080,
+            port: 10019,
             historyApiFallback: true,
             open: false,
             proxy: {
