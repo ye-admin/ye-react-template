@@ -36,15 +36,15 @@ export const globalSlice = createSlice({
     },
     extraReducers(builder) {
         builder.addCase(getAsyncInfo.pending, () => {
-            console.log("进行中")
+            // console.log("进行中")
         })
         builder.addCase(getAsyncInfo.fulfilled, (state, action) => {
-            console.log("action.payload: ", action.payload) //{number:"10"}
+            // console.log("action.payload: ", action.payload) //{number:"10"}
             state.value += action.payload
-            console.log("成功")
+            // console.log("成功")
         })
         builder.addCase(getAsyncInfo.rejected, () => {
-            console.log("失败")
+            // console.log("失败")
         })
     },
 })

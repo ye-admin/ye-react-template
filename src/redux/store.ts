@@ -16,6 +16,10 @@ export const store = configureStore({
         global: globalReducer,
         persist: persistedReducer
     },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: false,
+        }),
     devTools: true
 })
 // 从存储本身推断`RootState`和`AppDispatch`类型

@@ -28,6 +28,7 @@ root.render(
                 theme={{
                     token: {
                         fontSize: 16,
+                        colorPrimary: '#1DA57A'
                     },
                     algorithm: theme.defaultAlgorithm,
                 }}

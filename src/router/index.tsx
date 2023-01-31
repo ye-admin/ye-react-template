@@ -1,9 +1,4 @@
 import React, {} from "react"
-// import {
-//     Outlet,
-//     useLocation,
-//     useNavigate
-// } from "react-router-dom";
 import ErrorPage from "@/pages/error-page"
 import Main from "@/pages/main"
 import Home from "@/pages/home"
@@ -17,13 +12,13 @@ type meta = {
 export type MyRouter = {
     path?: string
     id: string
-    index?: boolean
     children?: MyRouter[]
     element?: React.ReactNode | null
     meta?: meta
     showNav?: boolean
 }
 
+// 虽然有好几个/ / / 但是实际都是一级路由
 export const router: MyRouter[] = [
     // 一级路由
     {
@@ -33,7 +28,16 @@ export const router: MyRouter[] = [
         // 二级路由
         children: [
             {
-                index: true,
+                path: '/',
+                element: <div>欢迎</div>,
+                id: 'welcome',
+                meta: {
+                    title: '欢迎'
+                },
+                showNav: true
+            },
+            {
+                path: '/book',
                 element: <Home />,
                 id: 'home',
                 meta: {
@@ -42,7 +46,7 @@ export const router: MyRouter[] = [
                 showNav: true
             },
             {
-                path: "contacts/:contactId",
+                path: "/contacts",
                 element: <Contact />,
                 id: 'contacts',
                 meta: {
@@ -51,7 +55,46 @@ export const router: MyRouter[] = [
                 showNav: true
             },
             {
-                path: "error",
+                path: "/ce",
+                id: 'contacts',
+                meta: {
+                    title: '测试'
+                },
+                showNav: true,
+                children: [
+                    {
+                        path: "/ce/one",
+                        element: <div>测试1</div>,
+                        id: 'contacts1',
+                        meta: {
+                            title: '测试1'
+                        },
+                        showNav: true,
+                        children: [
+                            {
+                                path: "/ce/one/two",
+                                element: <div>测试2</div>,
+                                id: 'contacts2',
+                                meta: {
+                                    title: '测试2'
+                                },
+                                showNav: true
+                            },
+                        ]
+                    },
+                    {
+                        path: "/ce/five",
+                        element: <div>测试5</div>,
+                        id: 'contacts5',
+                        meta: {
+                            title: '测试5'
+                        },
+                        showNav: true
+                    },
+                ]
+            },
+            {
+                path: "/error",
                 element: <ErrorPage />,
                 id: 'error',
                 meta: {
@@ -69,14 +112,3 @@ export const router: MyRouter[] = [
         }
     }
 ]
-
-// 后台管理项目路由守卫-localStorage或者redux
-// export const RouterBeforeEach = () => {
-//     const location = useLocation()
-//     const navigator = useNavigate()
-//     const token = localStorage.getItem('token')
-//     if (!token && location.pathname !== '/login') {
-//         navigator('/login')
-//     }
-//     return <Outlet />
-// }

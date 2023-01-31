@@ -1,4 +1,3 @@
-
 export const qsStringify = (data: Record<string, string | number> = {}): string => {
     if (Object.keys(data).length) {
         let str = ''

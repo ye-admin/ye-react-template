@@ -1,29 +1,25 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface StateType {
-    value: number
+    token: string
 }
 
 const initialState: StateType = {
-    value: 0,
+    token: '',
 }
 export const storgeSlice = createSlice({
     name: 'storge',
     initialState,
     reducers: {
-        add: (state) => {
-            state.value += 1
-        },
-        jian: (state) => {
-            state.value -= 1
-        },
-        addValue: (state, action: PayloadAction<number>) => {
-            state.value += action.payload
-        },
+        setToken: (state, action: PayloadAction<string>) => {
+            state.token = action.payload
+        }
     },
 })
 
 // 自动生成action
-export const { add, jian, addValue } = storgeSlice.actions
+export const {
+    setToken
+} = storgeSlice.actions
 
 export default storgeSlice.reducer
