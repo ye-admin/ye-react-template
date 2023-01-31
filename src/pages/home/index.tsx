@@ -1,10 +1,10 @@
 import { Button } from "antd"
 import React, { FC, useState } from "react"
-import { useNavigate } from "react-router-dom"
 import { test } from "@/assets/images"
+import { useGoRouter } from "@/utils/uHook"
 
 const Home: FC = () => {
-    const navigator = useNavigate()
+    const goPage = useGoRouter()
     const [value, setValue] = useState(0)
     return (<>
         <div className="home">
@@ -13,11 +13,9 @@ const Home: FC = () => {
             <Button onClick={() => setValue(value + 1)}>++</Button>
             <Button onClick={() => {
                 localStorage.removeItem('token')
-                navigator('/login')
+                goPage('/login')
             }}>logout</Button>
-            <img src={test} alt="" style={{
-                width: '600px'
-            }} />
+            <img src={test} alt="" style={{ width: '600px' }} />
         </div>
     </>)
 }

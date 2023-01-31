@@ -26,10 +26,9 @@ const App: FC = () => {
 export default App
 
 function renderRoute(item: MyRouter): ReactNode {
-    return item.index ? <Route index key={item.id} element={item.element} />
-        : <Route key={item.id} path={item.path} element={item.element}>
-            {
-                item.children && item.children.map(ele => renderRoute(ele))
-            }
-        </Route>
+    return <Route key={item.id} path={item.path} element={item.element}>
+        {
+            item.children && item.children.map(ele => renderRoute(ele))
+        }
+    </Route>
 }
