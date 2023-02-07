@@ -10,6 +10,12 @@
 * hash缓存
 * 代码规范以及代码提示
 
+## 自动部署说明
+* .github>workflows>deploy.yaml
+* 脚本监听了master分支的push操作所以仓库里面后缀是MD
+* 需要使用自动部署的改一下后缀名即可
+* 脚本详细使用方法在[ye](https://ye06.vip)
+
 ### 路由重点
 * 二级路由放在main下
 * 路由传参使用search方式
