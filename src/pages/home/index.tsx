@@ -1,9 +1,9 @@
 import { Button } from "antd"
 import React, { FC, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { test } from "@/assets/images"
 import { useAppDispatch, useAppSelector } from "@/redux/hooks"
 import { jian, addValue, getAsyncInfo } from "@/redux/global"
+import { logo } from "@/assets/images"
 
 const Home: FC = () => {
     const goPage = useNavigate()
@@ -23,7 +23,7 @@ const Home: FC = () => {
                 localStorage.removeItem('token')
                 goPage('/login')
             }}>logout</Button>
-            <img src={test} alt="" style={{ width: '600px' }} />
+            <img src={logo} alt="" style={{ width: '600px' }} />
         </div>
     </>)
 }

@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useEffect, useState } from 'react'
+import React, { FC, ReactNode, Suspense, useEffect, useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { router, MyRouter } from './router'
 import NoFont from "@/pages/noFont"
@@ -16,10 +16,12 @@ const App: FC = () => {
     }, [])
 
     return <BrowserRouter>
-        <Routes>
-            {list.map(i => renderRoute(i))}
-            <Route path='*' element={<NoFont />} />
-        </Routes>
+        <Suspense fallback={<div>loading....</div>}>
+            <Routes>
+                {list.map(i => renderRoute(i))}
+                <Route path='*' element={<NoFont />} />
+            </Routes>
+        </Suspense>
     </BrowserRouter>
 }
 
