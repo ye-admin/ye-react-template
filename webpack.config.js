@@ -15,7 +15,7 @@ module.exports = (env) => {
         mode: data.mode,
         devtool: data.devServer,
         entry: {
-            index: './src/index.tsx',
+            index: path.resolve(__dirname, './src/index.tsx'),
         },
         output: {
             filename: 'js/[name].[contenthash:8].js',
