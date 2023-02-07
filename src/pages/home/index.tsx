@@ -1,6 +1,6 @@
 import { Button } from "antd"
 import React, { FC, useState } from "react"
-import { test } from "@/assets/images"
+import { logo } from "@/assets/images"
 import { useGoRouter } from "@/utils/uHook"
 
 const Home: FC = () => {
@@ -15,7 +15,7 @@ const Home: FC = () => {
                 localStorage.removeItem('token')
                 goPage('/login')
             }}>logout</Button>
-            <img src={test} alt="" style={{ width: '600px' }} />
+            <img src={logo} alt="" style={{ width: '600px' }} />
         </div>
     </>)
 }

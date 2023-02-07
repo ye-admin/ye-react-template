@@ -1,9 +1,12 @@
-import React, {} from "react"
-import ErrorPage from "@/pages/error-page"
-import Main from "@/pages/main"
-import Home from "@/pages/home"
-import Contact from "@/pages/contact"
-import Login from "@/pages/login"
+import React, { lazy } from "react"
+// import Main from "@/pages/main"
+// import Contact from "@/pages/contact"
+// import Login from "@/pages/login"
+const Main = lazy(() => import('@/pages/main'))
+const Home = lazy(() => import('@/pages/home'))
+const Contact = lazy(() => import('@/pages/contact'))
+const Login = lazy(() => import('@/pages/login'))
+const ErrorPage = lazy(() => import('@/pages/error-page'))
 
 type meta = {
     title?: string

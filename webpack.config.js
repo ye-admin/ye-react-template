@@ -66,7 +66,7 @@ module.exports = (env) => {
             },
         },
         optimization: {
-            moduleIds: 'deterministic',
+            moduleIds: env.REACT_ENV === 'live' ? 'deterministic' : 'named',
             runtimeChunk: true,
             minimize: true,
             minimizer: [
