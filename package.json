@@ -22,6 +22,7 @@
     "axios": "^1.2.0",
     "babel-loader": "^9.1.0",
     "compression-webpack-plugin": "^10.0.0",
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.2",
     "cssnano": "^5.1.14",
     "html-webpack-plugin": "^5.5.0",

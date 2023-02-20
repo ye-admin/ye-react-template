@@ -7,6 +7,7 @@ const CompressionPlugin = require("compression-webpack-plugin");
 const {
     DefinePlugin,
 } = require("webpack")
+const CopyPlugin = require("copy-webpack-plugin");
 const config = require('./config')
 
 module.exports = (env) => {
@@ -25,6 +26,15 @@ module.exports = (env) => {
             asyncChunks: true
         },
         plugins: [
+            new CopyPlugin({
+                patterns: [{
+                    from: path.resolve(__dirname, './public'),
+                    to: path.resolve(__dirname, './dist'),
+                    globOptions: {
+                        ignore: "**/index.html"
+                    }
+                }]
+            }),
             new DefinePlugin({
                 'process.env.REACT_ENV': JSON.stringify(env.REACT_ENV),
             }),
@@ -64,6 +74,13 @@ module.exports = (env) => {
                     },
                 },
             },
+            static: {
+                directory: path.join(__dirname, './public'),
+                publicPath: '/',
+                staticOptions: {
+                    redirect: true,
+                },
+            }
         },
         optimization: {
             moduleIds: env.REACT_ENV === 'live' ? 'deterministic' : 'named',
