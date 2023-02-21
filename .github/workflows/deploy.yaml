@@ -15,15 +15,15 @@ jobs:
         with:
           node-version: '16'
 
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
       - name: Cache pnpm and node-modules
         uses: auguwu/node-pm-cache@master
         with:
           node-modules: ./node_modules
           package-manager: pnpm
-
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 7
 
       - name: Install
         run: pnpm i
