@@ -1,0 +1,29 @@
+name: ye-github-deploy
+
+on: 
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    name: deploy to yeah
+    runs-on: macOS-latest #虚拟机环境ubuntu-latest windows-latest macOS-latest
+    steps:
+      - uses: actions/checkout@v3 #拉取你的最新代码
+
+      - uses: actions/setup-node@v3 # 指定你的node版本
+        with:
+          node-version: '16'
+
+      - name: Cache pnpm and node-modules
+        uses: auguwu/node-pm-cache@master
+        with:
+          node-modules: ./node_modules
+          package-manager: pnpm
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - name: Install
+        run: pnpm i
