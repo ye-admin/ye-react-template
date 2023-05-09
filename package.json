@@ -4,7 +4,7 @@
   "description": "项目模板:webpack5+react+ts",
   "private": true,
   "scripts": {
-    "start": "webpack serve --env REACT_ENV=dev",
+    "dev": "webpack serve --env REACT_ENV=dev",
     "build:live": "webpack --env REACT_ENV=live",
     "analyzer": "webpack --env REACT_ENV=live --env analyzer"
   },
@@ -19,7 +19,6 @@
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
     "autoprefixer": "^10.4.13",
-    "axios": "^1.2.0",
     "babel-loader": "^9.1.0",
     "compression-webpack-plugin": "^10.0.0",
     "css-loader": "^6.7.2",
@@ -42,8 +41,11 @@
   "dependencies": {
     "@babel/runtime": "^7.20.6",
     "@reduxjs/toolkit": "^1.9.1",
-    "antd": "^5.1.2",
+    "antd": "^5.4.7",
+    "axios": "^1.4.0",
     "dayjs": "^1.11.6",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",

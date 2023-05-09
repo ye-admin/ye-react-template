@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { qsStringify } from "."
+import axios from "axios"
+import { errorLog } from "./log"
 
 /**
  * 路由跳转
@@ -62,3 +64,23 @@ export function useVisibilitychange() {
   return visibility
 }
 
+/**
+ * 图片转base64
+ * @returns 返回图片路径
+ */
+export const useImgBase64 = (str: string) => {
+  const [img, setImg] = useState('')
+  useEffect(() => {
+    axios.get(str, { responseType: 'blob' }).then(async (res) => {
+      const reader = new FileReader()
+      reader.readAsDataURL(new Blob([res.data], { type: 'image/png' }))
+      reader.onload = () => {
+        setImg(reader.result as string)
+      }
+    }).catch(error => {
+      errorLog('图片下载错误', error)
+      setImg(str)
+    })
+  }, [])
+  return img
+}

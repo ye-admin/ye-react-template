@@ -7,10 +7,15 @@ const CompressionPlugin = require("compression-webpack-plugin");
 const {
     DefinePlugin,
 } = require("webpack")
+// const CopyPlugin = require("copy-webpack-plugin");
 const config = require('./config')
 
 module.exports = (env) => {
-    const data = config[env.REACT_ENV]
+    const {
+        REACT_ENV
+    } = env
+    const data = config[REACT_ENV]
+    const isDev = REACT_ENV === 'dev'
     return {
         mode: data.mode,
         devtool: data.devServer,
@@ -18,26 +23,36 @@ module.exports = (env) => {
             index: path.resolve(__dirname, './src/index.tsx'),
         },
         output: {
-            filename: 'js/[name].[contenthash:8].js',
-            path: path.resolve(__dirname, './dist'),
+            // filename: 'js/[name].[contenthash:8].js',
+            filename: `js/[name]${isDev?'':'.[contenthash:8]'}.js`,
+            path: path.resolve(__dirname, './'),
             clean: true,
             publicPath: '/',
-            asyncChunks: true
+            asyncChunks: true,
         },
         plugins: [
+            // new CopyPlugin({
+            //     patterns: [{
+            //         from: path.resolve(__dirname, './public'),
+            //         to: path.resolve(__dirname, './'),
+            //         globOptions: {
+            //             ignore: "**/index.html"
+            //         }
+            //     }]
+            // }),
             new DefinePlugin({
-                'process.env.REACT_ENV': JSON.stringify(env.REACT_ENV),
+                'process.env.REACT_ENV': JSON.stringify(REACT_ENV),
             }),
             new HtmlWebpackPlugin({
                 filename: 'index.html',
                 template: path.resolve(__dirname, './public/index.html'),
-                // favicon: path.resolve(__dirname, './public/favicon.png')
             }),
             new MiniCssExtractPlugin({
-                filename: env.REACT_ENV === 'dev' ? 'css/[name].css' : 'css/[name].[contenthash:8].css',
+                // filename: env.REACT_ENV === 'dev' ? 'css/[name].css' : 'css/[name].[contenthash:8].css',
+                filename: `css/[name]${isDev?'':'.[contenthash:8]'}.css`
             }),
             ...env.analyzer ? [new BundleAnalyzerPlugin()] : [],
-            ...env.REACT_ENV === 'live' ? [new CompressionPlugin({
+            ...REACT_ENV === 'release' ? [new CompressionPlugin({
                 algorithm: 'gzip',
                 test: /\.js$|\.css$/,
                 threshold: 10240,
@@ -54,8 +69,10 @@ module.exports = (env) => {
         devServer: {
             hot: true,
             port: 10029,
-            historyApiFallback: true,
-            open: false,
+            historyApiFallback: {
+                index: '/'
+            },
+            open: ['/'],
             proxy: {
                 '/api': {
                     target: data.proxy,
@@ -64,15 +81,27 @@ module.exports = (env) => {
                     },
                 },
             },
+            client: {
+                overlay: {
+                    errors: !isDev,
+                    warnings: false,
+                },
+            }
         },
         optimization: {
-            moduleIds: env.REACT_ENV === 'live' ? 'deterministic' : 'named',
+            chunkIds: REACT_ENV === 'release' ? 'deterministic' : 'named',
+            moduleIds: REACT_ENV === 'release' ? 'deterministic' : 'named',
             runtimeChunk: true,
             minimize: true,
             minimizer: [
                 new TerserPlugin({
-                    parallel: true,
-                    extractComments: true, //提取注释
+                    parallel: true, // 开启多进程
+                    extractComments: false, //是否保留注释
+                    terserOptions: {
+                        format: {
+                            comments: false
+                        }
+                    }
                 })
             ],
             splitChunks: {

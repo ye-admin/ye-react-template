@@ -24,3 +24,6 @@ declare namespace ApiType {
         data: T
     }
 }
+declare interface Window {
+    env: string
+}

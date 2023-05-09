@@ -1,10 +1,10 @@
 import React, { FC, ReactNode, Suspense, useEffect, useState } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom'
 import { router, MyRouter } from './router'
-import NoFont from "@/pages/noFont"
+import { envLog } from './utils/log'
 
 const REACT_ENV = process.env.REACT_ENV
-console.log('REACT_ENV', REACT_ENV)
+envLog('REACT_ENV', REACT_ENV)
 
 const App: FC = () => {
     const [list] = useState(router)
@@ -19,7 +19,7 @@ const App: FC = () => {
         <Suspense fallback={<div>loading....</div>}>
             <Routes>
                 {list.map(i => renderRoute(i))}
-                <Route path='*' element={<NoFont />} />
+                <Route path='*' element={<Redirect to='/' />} />
             </Routes>
         </Suspense>
     </BrowserRouter>
@@ -33,4 +33,13 @@ function renderRoute(item: MyRouter): ReactNode {
             item.children && item.children.map(ele => renderRoute(ele))
         }
     </Route>
+}
+function Redirect({ to }: {
+    to: string
+}): JSX.Element {
+    let navigate = useNavigate()
+    useEffect(() => {
+        navigate(to)
+    })
+    return null
 }
